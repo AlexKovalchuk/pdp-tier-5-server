@@ -2,6 +2,7 @@ import { createJWT, hashPassword, comparePasswords } from "../modules/auth";
 import { createUerDocument, findUserByEmail }        from '../mongodb/users-db';
 import { UserInterface }                             from '../interfaces/user-interface';
 
+// comment
 export const signUp = async (req, res) => {
     
     const hash = await hashPassword(req.body.password);
