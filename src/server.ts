@@ -4,6 +4,9 @@ import cors                                     from 'cors';
 import { signIn, signUp }                       from './handlers/sign-handlers';
 import { body, check, oneOf, validationResult } from 'express-validator';
 import { handleInputErrors }                    from '@src/modules/middleware';
+import expressJwt from 'express-jwt';
+import { protect } from './modules/auth';
+import { log } from 'console';
 
 const app = express();
 
@@ -37,5 +40,16 @@ app.post(
     ]),
     signIn
 );
+
+app.get("/protected-route", protect, (req, res) => {
+    // This route handler will only be executed if the user is authenticated
+    console.log('/protected-route')
+    res.status(200).json({
+        data: {
+            message: 'This is a protected route',
+            user: 'Some user'
+        }
+    });
+});
 
 export default app;

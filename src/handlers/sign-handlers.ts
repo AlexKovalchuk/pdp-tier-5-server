@@ -40,5 +40,5 @@ export const signIn = async (req, res) => {
     
     const token = createJWT(userArray[0]);
     res.status(200);
-    res.json({ token, data: {text: 'success sing in'} });
+    res.json({ token, data: {text: 'success sing in'}, expiresIn: 60 });
 };

@@ -7,8 +7,14 @@ export interface UserInterface {
     birthdate?: Date | null;
 }
 
-interface UserAddressInterface {
+export interface UserAddressInterface {
     street: string;
     city: string;
     state: string;
+}
+
+export interface SignInResponse {
+    token: string;
+    data: any;
+    expiresIn: number;
 }
